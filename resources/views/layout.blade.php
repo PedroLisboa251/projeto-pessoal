@@ -9,31 +9,42 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #121212;
             color: white;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
         header {
             background: linear-gradient(to right, #6a11cb, #2575fc);
             padding: 20px;
             text-align: center;
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
         }
+
         footer {
             background-color: black;
             text-align: center;
-            margin-top: 5rem;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            margin-top: auto;
         }
+
         .container {
+            width: 100%;
             max-width: 100%;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+            flex-grow: 1;
         }
     </style>
 </head>

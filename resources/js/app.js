@@ -41,7 +41,7 @@ const observer = new IntersectionObserver((entries) => {
             entry.target.classList.remove('visible');
         }
     });
-}, { threshold: 0.3 });
+}, { threshold: 0.1 });
 
 items.forEach(item => {
     item.style.borderRadius = '25px';
@@ -95,3 +95,24 @@ document.addEventListener('keydown', (e) => {
 
 // Inicia com o primeiro item visível
 updateItems();
+
+// Adicionar ao seu arquivo JS
+function animateTextOnScroll() {
+    const textElements = document.querySelectorAll('.text-to-animate');
+
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('slide-up'); // Aplica a animação
+                textObserver.unobserve(entry.target); // Para de observar após a animação
+            }
+        });
+    }, { threshold: 0.2 }); // Dispara quando 10% do elemento estiver visível
+
+    textElements.forEach(element => {
+        textObserver.observe(element); // Observa cada elemento
+    });
+}
+
+// Inicia a função quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', animateTextOnScroll);
